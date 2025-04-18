@@ -46,8 +46,6 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.3.0",
-    "@commitlint/config-conventional": "17.3.0",
     "@jest/globals": "^29.6.4",
     "@rollup/plugin-commonjs": "^25.0.2",
     "@rollup/plugin-dynamic-import-vars": "^2.1.2",
@@ -106,11 +104,6 @@
   },
   "resolutions": {
     "@types/react": "^17.x"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "packageManager": "yarn@1.22.22"
 }
