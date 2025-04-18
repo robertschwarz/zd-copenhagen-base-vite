@@ -5,10 +5,10 @@
 import { defineConfig } from "vite";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-//import { viteZassPlugin } from "./vite-util/vite.zass-plugin";
 import { getManifestVariables } from "./vite-util/getManifestVariables";
 import { viteZassPlugin } from "./vite-util/vite.zass-plugin";
 import type { ZassPluginOptions } from "./vite-util/types/pluginTypes";
+import mkcert from "vite-plugin-mkcert";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -28,7 +28,7 @@ export default defineConfig(() => {
   const scssPreamble = manifestVariables.join("\n");
 
   return {
-    plugins: [viteZassPlugin(zassPluginOptions)],
+    plugins: [viteZassPlugin(zassPluginOptions), mkcert()],
     css: {
       preprocessorOptions: {
         scss: {

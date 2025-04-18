@@ -1,6 +1,10 @@
 import path from "path";
 import fs from "fs";
-import type { ThemeManifest, ThemeSetting } from "./types/manifestTypes";
+import type {
+  ThemeManifest,
+  ThemeSetting,
+  ThemeVariable,
+} from "./types/manifestTypes";
 
 /**
  * Extract variables from manifest.json and assets directory
@@ -12,6 +16,15 @@ export function getManifestVariables(
   try {
     const manifestPath = path.resolve(themeDir, "manifest.json");
     const assetsPath = path.resolve(themeDir, "assets");
+    const settingsPath = path.resolve(themeDir, "settings");
+
+    const settingAssets = fs.readdirSync(settingsPath);
+    const mappedSettingAssets = settingAssets.map((i: string) => {
+      return {
+        name: i,
+        identifier: i.split(".")[0],
+      };
+    });
 
     if (!fs.existsSync(manifestPath)) {
       console.error(`Manifest file not found: ${manifestPath}`);
@@ -24,33 +37,33 @@ export function getManifestVariables(
     const variableDefinitions: string[] = [];
 
     manifest.settings.forEach((setting: ThemeSetting) => {
-      setting.variables.forEach((variable) => {
+      setting.variables.forEach((variable: ThemeVariable) => {
         const identifier = variable.identifier;
 
-        let placeholderValue: string;
+        if (variable.type == "file") {
+          const targetFile = mappedSettingAssets.find(
+            (i) => i.identifier == identifier
+          );
 
-        switch (variable.type) {
-          case "color":
-            placeholderValue = "transparent";
-            break;
-          case "checkbox":
-            placeholderValue = "false";
-            break;
-          case "list":
-          case "text":
-            placeholderValue = '""';
-            break;
-          case "range":
-            placeholderValue = "0";
-            break;
-          case "file":
-            placeholderValue = '""';
-            break;
-          default:
-            placeholderValue = "null";
+          if (!targetFile)
+            throw new Error(`
+           Build failed while trying to generate sass variables from manifest in ./themes/manifest.json.
+           Reason: Manifest Setting with ${identifier} has no corresponding file in theme/settings.`);
+
+          if ("value" in variable && variable.value === undefined) {
+            throw new Error(`
+          Build failed while trying to generate sass variables from manifest in ./themes/manifest.json.
+          Reason: Undefined variable for identifier ${identifier}. Make sure to give it a value property.`);
+          }
+
+          return variableDefinitions.push(
+            `$${identifier}: "/theme/settings/${targetFile.identifier}.jpg";`
+          );
         }
 
-        variableDefinitions.push(`$${identifier}: ${placeholderValue};`);
+        const variableValue = variable.value;
+
+        variableDefinitions.push(`$${identifier}: ${variableValue};`);
       });
     });
 
