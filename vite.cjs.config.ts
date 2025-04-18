@@ -49,9 +49,28 @@ export default defineConfig(() => {
         output: {
           entryFileNames: () => "script.js",
           assetFileNames: (assetInfo) => {
-            if (assetInfo.names[0] && assetInfo.names[0].endsWith(".css")) {
-              return ".temp/vite-artifact.css";
+            const artifactFileTypes = ["css", "png", "jpg", "gif"];
+
+            /**
+             * There's most likely a cleaner way to implement this.
+             *
+             * What happens:
+             * Vite generates the images in theme/settings because of the sass preamble
+             * They're not needed, because they inherently exist already.
+             *
+             * It also tries to create a CSS file from the themeStyle input.
+             * But the real "style.css" file is created by the viteZassPlugin.
+             *
+             * My workaround is to bundle them in a .temp folder that's deleted
+             * after the build is done.
+             */
+            if (
+              assetInfo.names[0] &&
+              artifactFileTypes.includes(assetInfo.names[0].split(".")[1])
+            ) {
+              return ".temp/vite-artifact-[name].[ext]";
             }
+
             return "[name].[ext]";
           },
         },
