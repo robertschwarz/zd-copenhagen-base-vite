@@ -13,7 +13,8 @@
     "test-a11y": "node bin/lighthouse/index.js",
     "i18n:extract": "node bin/extract-strings.mjs",
     "i18n:update-translations": "node bin/update-modules-translations.mjs",
-    "zcli": "zcli"
+    "zcli": "zcli",
+    "repo": "open https://github.com/robertschwarz/zd-copenhagen-base-vite"
   },
   "dependencies": {
     "@zendesk/help-center-wysiwyg": "0.0.5",
