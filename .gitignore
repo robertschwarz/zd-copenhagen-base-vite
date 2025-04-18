@@ -30,3 +30,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Remove bundled JS assets from repo - only needed when serving or deploying
+theme/assets/*.js
