@@ -1,2 +1,2 @@
-import "./js-modules"
-import "./styles/index.scss"
+import "./js-modules";
+import "./styles/index.scss";
