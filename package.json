@@ -7,12 +7,7 @@
     "build": "NODE_ENV=production rollup -c",
     "prebuild": "rm -f assets/*-bundle.js",
     "eslint": "eslint src",
-    "download-locales": "node ./bin/update-translations",
-    "test": "jest",
-    "test-a11y": "node bin/lighthouse/index.js",
-    "i18n:extract": "node bin/extract-strings.mjs",
-    "i18n:update-translations": "node bin/update-modules-translations.mjs",
-    "zcli": "zcli",
+    "preview": "zcli themes:preview theme",
     "repo": "open https://github.com/robertschwarz/zd-copenhagen-base-vite"
   },
   "dependencies": {
