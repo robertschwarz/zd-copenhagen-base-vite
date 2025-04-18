@@ -9,6 +9,7 @@
     "eslint": "eslint src",
     "preview": "zcli themes:preview theme",
     "cb": "vite build --config vite.cjs.config.ts",
+    "cd": "vite dev --host --config vite.cjs.config.ts",
     "repo": "open https://github.com/robertschwarz/zd-copenhagen-base-vite"
   },
   "dependencies": {
