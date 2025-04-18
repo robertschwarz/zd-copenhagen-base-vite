@@ -1,3 +1,12 @@
+# Original Repo
+https://github.com/zendesk/copenhagen_theme
+
+# Use case
+* maybe faster build times and a nicer dev experience with vite's HMR and vitest
+* learn more complex implementations with vite, rather than using the typical next.js or web component boilerplates
+
+-----------
+
 # Copenhagen Theme by Zendesk
 
 The Copenhagen theme is the default Zendesk Guide theme. It is designed to be responsive and accessible.
