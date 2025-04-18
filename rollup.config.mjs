@@ -17,18 +17,6 @@ const TRANSLATION_FILE_REGEX =
   /src\/modules\/(.+?)\/translations\/locales\/.+?\.json$/;
 
 export default defineConfig([
-  // Configuration for bundling the script.js file
-  {
-    input: "src/index.js",
-    output: {
-      file: "script.js",
-      format: "iife",
-    },
-    plugins: [zass()],
-    watch: {
-      clearScreen: false,
-    },
-  },
   // Configuration for bundling modules in the src/modules directory
   {
     context: "this",

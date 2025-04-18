@@ -4,13 +4,15 @@
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
     "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
-    "build": "NODE_ENV=production rollup -c",
     "prebuild": "rm -f assets/*-bundle.js",
     "eslint": "eslint src",
     "preview": "zcli themes:preview theme",
     "cb": "vite build --config vite.cjs.config.ts",
     "cd": "vite dev --host --config vite.cjs.config.ts",
-    "repo": "open https://github.com/robertschwarz/zd-copenhagen-base-vite"
+    "cm": "vite build --config vite.esm.config.ts",
+    "build": "vite build --config vite.cjs.config.ts vite build --config vite.esm.config.ts",
+    "repo": "open https://github.com/robertschwarz/zd-copenhagen-base-vite",
+    "tu": "zcli themes:update --themeId=504fe318-c30a-42e0-90c2-249d9e334347"
   },
   "dependencies": {
     "@zendesk/help-center-wysiwyg": "0.0.5",
@@ -96,6 +98,7 @@
     "vinyl-fs": "^4.0.0",
     "vite": "^6.3.2",
     "vite-plugin-mkcert": "^1.17.8",
+    "vite-plugin-svgr": "^4.3.0",
     "wait-on": "7.0.1"
   },
   "resolutions": {

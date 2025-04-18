@@ -36,6 +36,9 @@ export default defineConfig(() => {
         },
       },
     },
+    server: {
+      hmr: true,
+    },
     build: {
       type: "es",
       minify: false,

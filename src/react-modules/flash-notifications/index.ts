@@ -1,1 +1,1 @@
-export * from "./renderFlashNotifications";
+export { renderFlashNotifications } from "./renderFlashNotifications";

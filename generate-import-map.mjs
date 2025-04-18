@@ -60,7 +60,7 @@ function replaceImports(fileName, outputAssets, outputPath) {
  * @param {object} importMap
  */
 function injectImportMap(importMap) {
-  const headTemplatePath = path.resolve("templates", "document_head.hbs");
+  const headTemplatePath = path.resolve("theme/templates", "document_head.hbs");
   const content = fs.readFileSync(headTemplatePath, "utf-8");
   const importMapStart = content.indexOf(`<script type="importmap">`);
   const importMapEnd = content.indexOf(`</script>`, importMapStart);
