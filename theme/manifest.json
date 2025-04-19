@@ -406,14 +406,13 @@
     },
     {
       "label": "vite_developer_configuration_label",
-      "description": "vite_developer_configuration_description",
       "variables": [
         {
           "identifier": "vite_is_development_mode",
           "type": "checkbox",
           "description": "vite_is_development_mode_description",
           "label": "vite_is_development_mode_label",
-          "value": true
+          "value": false
         }
       ]
     }

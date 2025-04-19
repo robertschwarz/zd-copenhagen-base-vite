@@ -11,7 +11,7 @@
     "dev": "concurrently -n \"theme-server,react-server,zcli-server\" -c \"blue,green\" \"yarn dev:theme\" \"yarn dev:react\" \"yarn preview\"",
     "preview": "zcli themes:preview theme",
     "repo": "open https://github.com/robertschwarz/zd-copenhagen-base-vite",
-    "tu": "zcli themes:update theme --themeId=504fe318-c30a-42e0-90c2-249d9e334347"
+    "zd:create": "yarn build && zcli themes:import theme"
   },
   "dependencies": {
     "@zendesk/help-center-wysiwyg": "0.0.5",
