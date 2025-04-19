@@ -38,6 +38,7 @@ export default defineConfig(() => {
     },
     server: {
       hmr: true,
+      port: 9001,
     },
     build: {
       type: "iife",
@@ -52,8 +53,6 @@ export default defineConfig(() => {
         output: {
           entryFileNames: () => "script.js",
           assetFileNames: (assetInfo) => {
-            const artifactFileTypes = ["css", "png", "jpg", "gif"];
-
             /**
              * There's most likely a cleaner way to implement this.
              *
@@ -67,6 +66,8 @@ export default defineConfig(() => {
              * My workaround is to bundle them in a .temp folder that's deleted
              * after the build is done.
              */
+            const artifactFileTypes = ["css", "png", "jpg", "gif"];
+
             if (
               assetInfo.names[0] &&
               artifactFileTypes.includes(assetInfo.names[0].split(".")[1])

@@ -11,6 +11,9 @@ console.log("Starting React Server..");
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), generateImportMapPlugin(), mkcert()],
+  server: {
+    port: 9002,
+  },
   build: {
     outDir: "theme/assets",
     /**
