@@ -4,16 +4,12 @@
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
     "prebuild": "rm -f assets/*-bundle.js",
-    "eslint": "eslint src",
-    "preview": "zcli themes:preview theme",
-    "cb": "vite build --config vite.theme.config.ts",
-    "cd": "vite dev --host --config vite.theme.config.ts",
-    "cm": "vite build --config vite.react-modules.config.ts",
     "build": "vite build --config vite.theme.config.ts && vite build --config vite.react-modules.config.ts",
+    "predev": "echo '' > theme/style.css && echo '' > theme/script.js && rm -f theme/assets/*-bundle.js",
+    "dev": "yarn predev && concurrently -k -r 'vite dev --host --config vite.react-modules.config.ts' 'vite dev --host --config vite.theme.config.ts'",
+    "preview": "zcli themes:preview theme",
     "repo": "open https://github.com/robertschwarz/zd-copenhagen-base-vite",
-    "tu": "zcli themes:update theme --themeId=504fe318-c30a-42e0-90c2-249d9e334347",
-    "dev": "concurrently -k -r 'vite dev --host --config vite.react-modules.config.ts' 'vite dev --host --config vite.theme.config.ts'",
-    "rd": "vite dev --host --config vite.react-modules.config.ts"
+    "tu": "zcli themes:update theme --themeId=504fe318-c30a-42e0-90c2-249d9e334347"
   },
   "dependencies": {
     "@zendesk/help-center-wysiwyg": "0.0.5",
