@@ -6,25 +6,27 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { generateImportMap } from "./generate-import-map.mjs";
 import mkcert from "vite-plugin-mkcert";
+import { generateImportMapPlugin } from "./vite-util/vite.generate-import-map";
 
-console.log("Starting React Server..")
+console.log("Starting React Server..");
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), generateImportMap(), mkcert()],
-  build: { 
+  plugins: [react(), generateImportMapPlugin(), mkcert()],
+  build: {
     outDir: "theme/assets",
     /**
      * WYSIWYG Editor Bundle is really big (>1MB)
      * Zendesk already optimiased the bundle so that it bundle only gets loaded when it's really
      * needed. (in a text type field where wysiwyg = true)
-     * 
+     *
      * The setting below disables vite's chunk size warnings.
      */
     chunkSizeWarningLimit: 1200,
     rollupOptions: {
       input: {
         "new-request-form": "src/react-modules/new-request-form/index.tsx",
-        "flash-notifications": "src/react-modules/flash-notifications/index.tsx",
+        "flash-notifications":
+          "src/react-modules/flash-notifications/index.tsx",
       },
       output: {
         format: "es",
