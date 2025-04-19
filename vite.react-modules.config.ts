@@ -7,22 +7,10 @@ import react from "@vitejs/plugin-react";
 import mkcert from "vite-plugin-mkcert";
 import { generateImportMapPlugin } from "./vite-util/vite.generate-import-map";
 
-console.log("Starting React Server..");
-
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const isProduction = env.NODE_ENV === "production";
-
-  if (isProduction) {
-    console.log(
-      "Bundling React Modules into theme/assets and updating theme/document_head.hbs."
-    );
-  } else {
-    console.log(
-      "Locally serving React Modules and inject vite snippets into theme/document_head.hbs."
-    );
-  }
 
   return {
     plugins: [react(), isProduction && generateImportMapPlugin(), mkcert()],
