@@ -6,11 +6,8 @@
 import type { Plugin } from "vite";
 import path from "path";
 import fs from "fs";
+import type { ImportMap, OutputBundle } from "./types/pluginTypes";
 
-type OutputBundle = { [fileName: string]: { fileName: string; name?: string } };
-type ImportMap = {
-  imports: Record<string, string>;
-};
 /**
  * When assets are deployed to Theming Center, their file name is changed and this
  * breaks the rollup bundles, where bundled files are referencing each other with

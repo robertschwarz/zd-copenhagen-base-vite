@@ -4,7 +4,6 @@
  */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { generateImportMap } from "./generate-import-map.mjs";
 import mkcert from "vite-plugin-mkcert";
 import { generateImportMapPlugin } from "./vite-util/vite.generate-import-map";
 
