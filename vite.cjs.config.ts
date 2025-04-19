@@ -40,7 +40,7 @@ export default defineConfig(() => {
       hmr: true,
     },
     build: {
-      type: "es",
+      type: "iife",
       minify: false,
       outDir: "theme",
       emptyOutDir: false,

@@ -15,5 +15,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/react-modules/*", "src/js-modules/*", "src/main.ts"]
+  "exclude": ["node_modules", "theme/assets", "theme/script.js"],
+  "include": ["src/react-modules", "src/js-modules", "global.d.ts", "vite-env.d.ts"]
 }

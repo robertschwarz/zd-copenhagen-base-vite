@@ -12,7 +12,7 @@ export function viteZassPlugin(options: ZassPluginOptions): Plugin {
 
   const manifestPath = path.resolve(themeDir, "manifest.json");
   const assetsPath = path.resolve(themeDir, "assets");
-  console.log("running zass plugin");
+
   let preamble = "";
   try {
     const data = fs.readFileSync(manifestPath, "utf-8");

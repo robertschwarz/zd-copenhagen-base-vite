@@ -21,8 +21,7 @@
 </div>
 
 <script type="module">
-  import { renderNewRequestForm } from "new-request-form";
-
+window.addEventListener("new-request-form-module::load", (e) => {
   const container = document.getElementById("new-request-form");
 
   const settings = {{json settings}};
@@ -51,4 +50,7 @@
   };
 
   renderNewRequestForm(settings, props, container);
+})
 </script>
+
+<script type="module" src="{{asset 'new-request-form-bundle.js'}}"></script>

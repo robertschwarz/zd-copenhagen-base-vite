@@ -17,10 +17,7 @@ export async function renderNewRequestForm(
   const { baseLocale } = props;
 
   initI18next(baseLocale);
-  await loadTranslations(
-    baseLocale,
-    () => import(`./translations/locales/${baseLocale}.json`)
-  );
+  await loadTranslations(baseLocale);
 
   render(
     <ThemeProviders theme={createTheme(settings)}>

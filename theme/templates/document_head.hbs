@@ -5,28 +5,45 @@
 <script type="text/javascript">
   // Load ES module polyfill only for browsers that don't support ES modules
   if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('importmap'))) {
-    document.write('<script async src="{{asset 'es-module-shims.js'}}"><\/script>');
+    document.write('<script async src="{{asset 'es - module - shims.js'}}"><\/script>');
   }
 </script>
+
 <script type="importmap">
 {
   "imports": {
-    "flash-notifications": "{{asset 'flash-notifications-bundle.js'}}",
     "new-request-form": "{{asset 'new-request-form-bundle.js'}}",
+    "flash-notifications": "{{asset 'flash-notifications-bundle.js'}}",
     "shared": "{{asset 'shared-bundle.js'}}",
     "wysiwyg": "{{asset 'wysiwyg-bundle.js'}}"
   }
 }
 </script>
-<script type="module">
-  import { renderFlashNotifications } from "flash-notifications";
 
-  const settings = {{json settings}};
-  const closeLabel = {{json (t 'close')}}
+<script>
+  window.addEventListener("flash-notifications-module::load", () => {
+    const settings = `{{ json settings }}`
+    const closeLabel = `{{ json (t 'close')}}`
 
-  renderFlashNotifications(settings, closeLabel);
+    renderFlashNotifications(settings, closeLabel);
+  });
 </script>
 
-<script type="module" src="https://localhost:5173/src/js-modules/index.ts"></script>
+<script type="module" src="{{asset 'shared-bundle.js'}}"></script>
+<script type="module" src="{{asset 'flash-notifications-bundle.js'}}"></script>
+
+
+<script type="module">
+  import RefreshRuntime from 'https://localhost:5173/@react-refresh'
+  RefreshRuntime.injectIntoGlobalHook(window)
+  window.$RefreshReg$ = () => { }
+  window.$RefreshSig$ = () => (type) => type
+  window.__vite_plugin_react_preamble_installed__ = true
+</script>
+<script type="module" src="https://localhost:5173/src/react-modules/flash-notifications/index.ts"></script>
+<script type="module" src="https://localhost:5173/src/react-modules/new-request-form/index.ts"></script>
 <script type="module" src="https://localhost:5173/@vite/client"></script>
-<link rel="stylesheet" href="https://localhost:5173/src/styles/index.scss"></script>
+
+<script type="module" src="https://localhost:5174/src/js-modules/index.ts"></script>
+<script type="module" src="https://localhost:5174/@vite/client"></script>
+<link rel="stylesheet" href="https://localhost:5174/src/styles/index.scss">

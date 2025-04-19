@@ -10,9 +10,11 @@
     "cb": "vite build --config vite.cjs.config.ts",
     "cd": "vite dev --host --config vite.cjs.config.ts",
     "cm": "vite build --config vite.esm.config.ts",
-    "build": "vite build --config vite.cjs.config.ts vite build --config vite.esm.config.ts",
+    "build": "vite build --config vite.cjs.config.ts && vite build --config vite.esm.config.ts",
     "repo": "open https://github.com/robertschwarz/zd-copenhagen-base-vite",
-    "tu": "zcli themes:update --themeId=504fe318-c30a-42e0-90c2-249d9e334347"
+    "tu": "zcli themes:update theme --themeId=504fe318-c30a-42e0-90c2-249d9e334347",
+    "dev": "concurrently -k -r 'vite dev --host --config vite.esm.config.ts' 'vite dev --host --config vite.cjs.config.ts'",
+    "rd": "vite dev --host --config vite.esm.config.ts"
   },
   "dependencies": {
     "@zendesk/help-center-wysiwyg": "0.0.5",

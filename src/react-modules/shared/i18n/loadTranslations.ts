@@ -1,13 +1,21 @@
 import i18next from "i18next";
 
-export async function loadTranslations(
-  locale: string,
-  dynamicImport: () => Promise<{ default: Record<string, string> }>
-) {
+const translationModules = import.meta.glob("./translations/locales/*.json", {
+  eager: true,
+});
+
+export async function loadTranslations(locale: string) {
   try {
-    const { default: translations } = await dynamicImport();
-    i18next.addResourceBundle(locale, "translation", translations);
+    const localeFilePath = `./translations/locales/${locale}.json`;
+
+    const translations = translationModules[localeFilePath] as {
+      default: Record<string, string>;
+    };
+
+    if (translations) {
+      i18next.addResourceBundle(locale, "translation", translations.default);
+    }
   } catch (e) {
-    console.error(`Cannot load translations for ${locale}`);
+    console.error(`Cannot load translations for ${locale}`, e);
   }
 }
