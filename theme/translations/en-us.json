@@ -72,5 +72,9 @@
   "text_font_description": "Font for body text",
   "text_font_label": "Text Font",
   "visited_link_color_description": "Text color for visited link elements",
-  "visited_link_color_label": "Visited link color"
+  "visited_link_color_label": "Visited link color",
+  "vite_developer_configuration_label": "Vite Development Configuration",
+  "vite_developer_configuration_description": "This should not be manually edited. The variables in this setting are automatically set by Vite.",
+  "vite_is_development_mode_description": "Dictates what modules are loaded in theme/document_head.hbs. Loads $asset imports in production. Loads vite scripts in development.",
+  "vite_is_development_mode_label": "Is Vite Development Mode?"
 }

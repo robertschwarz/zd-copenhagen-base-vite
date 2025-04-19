@@ -1,3 +1,18 @@
+/**
+ * Mostly the same implementation as Zendesk's in Copenhagen, just with TS
+ * https://github.com/zendesk/copenhagen_theme/blob/master/generate-import-map.mjs
+ *
+ * Also saves `style.css` in `theme` directory on build.
+ *
+ * This is done to preserve custom manifest variables in the output file, such as $brand_color and asset path variables.
+ * Vite's default built .css file resolves all variables into their actual values.
+ * Vite's build is explicitly configured to store the vite output file in a "dead" `theme/.temp` folder.
+ * This folder is ignored by Zendesk when running zcli themes:import // zcli:themes:update
+ *
+ * If we were to use Vite's default .CSS bundle with resolved variables, an End-User won't be able to use
+ * the manifest settings anymore to customize the theme.
+ */
+
 import path from "path";
 import fs from "fs";
 import { compileString } from "sass";
