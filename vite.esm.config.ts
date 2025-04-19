@@ -13,6 +13,14 @@ export default defineConfig({
   plugins: [react(), generateImportMap(), mkcert()],
   build: { 
     outDir: "theme/assets",
+    /**
+     * WYSIWYG Editor Bundle is really big (>1MB)
+     * Zendesk already optimiased the bundle so that it bundle only gets loaded when it's really
+     * needed. (in a text type field where wysiwyg = true)
+     * 
+     * The setting below disables vite's chunk size warnings.
+     */
+    chunkSizeWarningLimit: 1200,
     rollupOptions: {
       input: {
         "new-request-form": "src/react-modules/new-request-form/index.tsx",

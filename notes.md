@@ -9,4 +9,5 @@ Problem: vite doesnt bundle the translation files into a single file.
 - changed the approach to loading react modules
 - keep importmap, but now the bundles need to be loaded as script modules where needed
 - use a helper that sends a module load event to the window
+- window function definitions are handled in `global.d.ts` (base dir)
 - in a template file, listen to the load event, then tell me module to render with renderSomeModule()
