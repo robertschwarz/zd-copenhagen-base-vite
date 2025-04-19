@@ -3,18 +3,17 @@
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
-    "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
     "prebuild": "rm -f assets/*-bundle.js",
     "eslint": "eslint src",
     "preview": "zcli themes:preview theme",
-    "cb": "vite build --config vite.cjs.config.ts",
-    "cd": "vite dev --host --config vite.cjs.config.ts",
-    "cm": "vite build --config vite.esm.config.ts",
-    "build": "vite build --config vite.cjs.config.ts && vite build --config vite.esm.config.ts",
+    "cb": "vite build --config vite.theme.config.ts",
+    "cd": "vite dev --host --config vite.theme.config.ts",
+    "cm": "vite build --config vite.react-modules.config.ts",
+    "build": "vite build --config vite.theme.config.ts && vite build --config vite.react-modules.config.ts",
     "repo": "open https://github.com/robertschwarz/zd-copenhagen-base-vite",
     "tu": "zcli themes:update theme --themeId=504fe318-c30a-42e0-90c2-249d9e334347",
-    "dev": "concurrently -k -r 'vite dev --host --config vite.esm.config.ts' 'vite dev --host --config vite.cjs.config.ts'",
-    "rd": "vite dev --host --config vite.esm.config.ts"
+    "dev": "concurrently -k -r 'vite dev --host --config vite.react-modules.config.ts' 'vite dev --host --config vite.theme.config.ts'",
+    "rd": "vite dev --host --config vite.react-modules.config.ts"
   },
   "dependencies": {
     "@zendesk/help-center-wysiwyg": "0.0.5",
